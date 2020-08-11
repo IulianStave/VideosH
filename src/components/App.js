@@ -17,21 +17,9 @@ const App = () => {
     const response = await youtube.get("/search", {
       params: { ...baseParams, q: term },
     });
-    //console.log(`Response has ${response.data.items.length} items whitin it`);
-    setVideos(response.data.items);
-    setSelectedVideo(response.data.items[0]);
-    // this.setState(
-    //   {
-    //     videos: response.data.items,
-    //     selectedVideo: response.data.items[0]
-    //   });
-
-    // // console.log(this.state);
   };
 
   const onVideoSelect = (video) => {
-    // console.log('From the App ', video);
-    // this.setState({selectedVideo: video})
     setSelectedVideo(video);
   };
 
@@ -47,7 +35,10 @@ const App = () => {
             <VideoDetail video={selectedVideo} />
           </div>
           <div className="five wide column">
-            <VideoList onVideoSelect={(video) => setSelectedVideo(video)} videos={videos} />
+            <VideoList 
+            // onVideoSelect={(video) => setSelectedVideo(video)}
+            onVideoSelect={setSelectedVideo}
+            videos={videos} />
           </div>
         </div>
       </div>
