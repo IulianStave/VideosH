@@ -3,25 +3,20 @@ import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 
-import youtube, { baseParams } from "../apis/youtube";
+import useVideos from "../hooks/useVideos";
 
 const App = () => {
-  const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videos, search] = useVideos("Jeff Sutherland Scrum Google")
+
 
   useEffect(() => {
-    SearchSubmit("Jeff Sutherland Scrum Google");
-  }, []);
-
-  const SearchSubmit = async (term) => {
-    const response = await youtube.get("/search", {
-      params: { ...baseParams, q: term },
-    });
-  };
+    setSelectedVideo(videos[0]);
+  }, [videos]);
 
   return (
     <div className="ui container">
-      <SearchBar onFormSubmit={SearchSubmit} />
+      <SearchBar onFormSubmit={search} />
       <div className="ui segment">
         {!videos.length ? " " : `${videos.length} videos found`}
       </div>
