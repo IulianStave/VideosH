@@ -47,11 +47,12 @@ const App = () => {
             <VideoDetail video={selectedVideo} />
           </div>
           <div className="five wide column">
-            <VideoList onVideoSelect={onVideoSelect} videos={videos} />
+            <VideoList onVideoSelect={(video) => setSelectedVideo(video)} videos={videos} />
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default App;
