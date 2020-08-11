@@ -5,7 +5,7 @@ export const htmlDecode =(input)=> {
   return doc.documentElement.textContent;
 };
 
-const KEY = process.env.REACT_APP_KEY;
+const KEY = process.env.REACT_APP_KEY_GOOGLE;
 
 export const baseParams = {
   part: 'snippet',

@@ -36,7 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
-        <SearchBar WhenSubmitDo={this.SearchSubmit} />
+        <SearchBar onFormSubmit={this.SearchSubmit} />
         <div className="ui segment">
           { 
           !this.state.videos.length ? 
